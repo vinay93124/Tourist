@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TRAVEL BEYOND INDIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Professional Header */
+    .professional-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: #ff6b6b;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+      margin: 0;
+    }
+
+    .logo-tagline {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-menu a:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .auth-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .auth-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .auth-btn.primary {
+      background: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+
+    .auth-btn.primary:hover {
+      background: #ff5252;
+      border-color: #ff5252;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Enhanced Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,100 0,50"/></svg>');
+      background-size: 100% 100%;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 40px auto;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 300px;
+      font-size: 1em;
+      border: 2px solid #2c5364;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      background-color: #2c5364;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #203a43;
+    }
+
+    .results {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .place-card {
+      margin-bottom: 30px;
+    }
+
+    .place-card img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .place-card h2 {
+      margin: 10px 0 5px;
+    }
+
+    .place-card p {
+      margin: 5px 0;
+    }
+
+    .job-listing {
+      background: #eef;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .contributor {
+      font-style: italic;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c5364;
+      color: white;
+      margin-top: 40px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .header-container {
+        padding: 0 1rem;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Features Section */
+    .section {
+      padding: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2d3748;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.125rem;
+      color: #718096;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #667eea;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: #718096;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    .footer-links a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #667eea;
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      color: #a0aec0;
+      font-size: 0.875rem;
+    }
+
+    /* Best Photos Gallery Section */
+    .gallery-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 5rem 0;
+    }
+
+    .gallery-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gallery-subtitle {
+      font-size: 1.2rem;
+      color: #718096;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid #e2e8f0;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: #4a5568;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .photo-card {
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+    }
+
+    .photo-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover .photo-image {
+      transform: scale(1.1);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:hover .photo-overlay {
+      transform: translateY(0);
+    }
+
+    .photo-location {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .photo-description {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .photo-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .photo-category {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      background: rgba(255, 107, 107, 0.95);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .photo-rating {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 193, 7, 0.95);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .rating-stars {
+      color: #ffd700;
+    }
+
+    .view-all-container {
+      text-align: center;
+    }
+
+    .view-all-btn {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff8a80 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .view-all-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(135deg, #ff5252 0%, #ff7043 100%);
+    }
+
+    /* Responsive Design for Gallery */
+    @media (max-width: 768px) {
+      .photos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .gallery-title {
+        font-size: 2.2rem;
+      }
+
+      .gallery-controls {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-container {
+        padding: 0 1rem;
+      }
+
+      .photos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-image {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Professional Header -->
+  <header class="professional-header">
+    <div class="header-container">
+      <div class="logo-section">
+        <i class="fas fa-globe-asia logo-icon"></i>
+        <div>
+          <h1 class="logo-text">TRAVEL BEYOND INDIA</h1>
+          <p class="logo-tagline">Discover • Explore • Connect</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#destinations"><i class="fas fa-map-marked-alt"></i> Destinations</a>
+        <a href="#safety"><i class="fas fa-shield-alt"></i> Safety</a>
+        
+        <a href="#community"><i class="fas fa-users"></i> Community</a>
+      </nav>
+
+
+      <button class="menu-toggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Enhanced Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Explore Places with Local Wisdom</h1>
+      <p class="hero-subtitle">Discover authentic experiences, connect with locals, and find opportunities - all curated by the community</p>
+    </div>
+  </section>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search: rajahmundry, kakinada, bhimavaram, vizag">
+    <button onclick="searchPlace()">Search</button>
+  </div>
+
+  <div class="results" id="results"></div>
+
+  <script>
+    const places = {
+      "rajahmundry": {
+        name: "Rajahmundry",
+        description: `<div>
+          Rajahmundry, officially known as Rajamahendravaram, is an ancient and culturally significant city in the East Godavari district of Andhra Pradesh, India, situated on the left bank of the Godavari River. It is historically important as the former capital for various Telugu kingdoms, the seat of the 11th-century Chalukya ruler Rajaraja Narendra, and a center for Telugu literature, particularly with the poet Nannayya translating the Mahabharata into Telugu. The city is an important commercial hub, has significant agricultural land, and is known for its natural beauty and religious sites.
+          <p>
+            <a href="https://commons.wikimedia.org/wiki/File:Sunset_at_Godavri.JPG#/media/File:Sunset_at_Godavri.JPG">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Sunset_at_Godavri.JPG" alt="Sunset over Godavari Arch Bridge" height="2592" width="3872">
+            </a>
+            <br>
+            By <a href="//commons.wikimedia.org/wiki/User:Hariya1234" title="User:Hariya1234">Hariya1234</a> - <span class="int-own-work" lang="en">Own work</span>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=15300600">Link</a>
+          </p>
+        </div>`,
+        safety: "9/10",
+        bestTime: "April to June",
+        contributor: "wikipedia"
+      },
+      "kakinada": {
+        name: "Kakinada",
+        description: `<div>
+          Location: A coastal city situated on the Bay of Bengal in southern India's Andhra Pradesh. It is a port city and municipal corporation in the Indian state of Andhra Pradesh.[8] Situated along the Bay of Bengal, it serves as the headquarters of Kakinada district and is a prominent economic and cultural centre in the region. It is the sixth most populous city in the state and is recognised as one of India's most livable and cleanest cities among those with a population under one million.[9][10] Nicknamed the "Pensioners' Paradise," Kakinada is known for its well-planned layout and modern infrastructure.
+          <p>
+            <a href="https://commons.wikimedia.org/wiki/File:Kakinada_port.jpg#/media/File:Kakinada_port.jpg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Kakinada_port.jpg" alt="Kakinada port.jpg" height="2446" width="3264">
+            </a>
+            <br>
+            By <a href="//commons.wikimedia.org/w/index.php?title=User:Arunk336&amp;action=edit&amp;redlink=1" class="new" title="User:Arunk336 (page does not exist)">Arunk336</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=59721227">Link</a>
+          </p>
+        </div>`,
+        safety: "9/10",
+        bestTime: "April to June",
+        contributor: "Wikipedia"
+      },
+      "bhimavaram": {
+        name: "Bhimavaram",
+        description: "Bhimavaram is a city and headquarters of West Godavari district in the Indian state of Andhra Pradesh. It is the administrative headquarters of Bhimavaram mandal in Bhimavaram revenue division.[4][5] It is a part of Eluru Urban Development Authority. As of 2011 census, it is the most populous urban area in the district with a population of 163,875. It is one of the major pilgrimage centers in the state, which is home to Somaramam, one of the five great Pancharama Kshetras.",
+        safety: "9.5/10",
+        bestTime: "March to May",
+        image: "https://i.ytimg.com/vi/2ZX9PZseZlI/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFry8CYAC0AWKAgwIABABGE8gZSg4MA8=&rs=AOn4CLBGTaHLcRMWkwdjQ5wgFQLQjwvodQ",
+        contributor: "Wikipedia"
+      },
+      "vizag": {
+        name: "Vishakapatnam",
+        description: `<div>
+          Visakhapatnam, also commonly known as Vizag, is one of the oldest port cities in the country. Situated in the heart of Andhra Pradesh, Visakhapatnam is known for its picturesque beaches and serene landscape, as well as a rich cultural past, which makes it an ideal spot for a fantastic coastal vacation. The port of Visakhapatnam is renowned for being home to the oldest shipyard in all of India, and with a plethora of manmade wonders and natural spectacles, Visakhapatnam is a must-visit tourist destination in South India.
+          <p>
+            <a href="https://commons.wikimedia.org/wiki/File:Vizag_View_from_Kailasagiri.jpg#/media/File:Vizag_View_from_Kailasagiri.jpg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Vizag_View_from_Kailasagiri.jpg" alt="Vizag View from Kailasagiri.jpg" height="1658" width="4592">
+            </a>
+            <br>
+            By <a href="//commons.wikimedia.org/w/index.php?title=User:Av9&amp;action=edit&amp;redlink=1" class="new" title="User:Av9 (page does not exist)">Av9</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=40501935">Link</a>
+          </p>
+        </div>`,
+        safety: "7.5/10",
+        bestTime: "November to March",
+        image: "https://i.ytimg.com/vi/82UBeObbF6s/maxresdefault.jpg",
+        contributor: "Wikipedia"
+      }
+    };
+
+    function searchPlace() {
+      const input = document.getElementById("searchInput").value.toLowerCase().trim();
+      const place = places[input];
+      const resultsDiv = document.getElementById("results");
+
+      if (place) {
+        resultsDiv.innerHTML = `
+          <div class="place-card">
+            <img src="${place.image}" alt="${place.name}">
+            <h2>${place.name}</h2>
+            <p><strong>Description:</strong> ${place.description}</p>
+            <p><strong>Safety Rating:</strong> ${place.safety}</p>
+            <p><strong>Best Time to Visit:</strong> ${place.bestTime}</p>
+          
+            <div class="contributor">Contributed by: ${place.contributor}</div>
+          </div>
+        `;
+      } else {
+        resultsDiv.innerHTML = `<p>No results found. Try searching for: rajahmundry, kakinada, bhimavaram, or vizag.</p>`;
+      }
+    }
+
+    function toggleMobileMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function toggleAuth() {
+      alert('Login functionality would be implemented here');
+    }
+
+    function toggleSignup() {
+      alert('Sign up functionality would be implemented here');
+    }
+
+    // Gallery Filter Functionality
+    function filterPhotos(category) {
+      const photoCards = document.querySelectorAll('.photo-card');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Filter photos
+      photoCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          card.style.animation = 'fadeIn 0.5s ease-in-out';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Add smooth scroll behavior for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Add fade-in animation for photo cards on load
+      const photoCards = document.querySelectorAll('.photo-card');
+      photoCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
+
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title">Why Travel Beyond India?</h2>
+      <p class="section-subtitle">We solve the uncertainty of exploring new places by providing two key services.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Authentic Local Guides</h3>
+          <p>Access a curated database of hidden gems and local tips, all verified by residents.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Empowering Travelers</h3>
+          <p>Stay safe with our integrated safety toolkit and find opportunities for part-time work.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Community-Powered</h3>
+          <p>Contribute your local knowledge and help fellow travelers explore with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">Our Mission</h2>
+      <p class="section-subtitle">We believe that the best way to travel is to see the world through the eyes of the people who live there.</p>
+      <div class="about-content">
+        <p><strong>TRAVEL BEYOND INDIA</strong> is a community-powered web platform designed to be a comprehensive and trusted resource for travelers. Our core mission is to empower travelers by providing authentic, reliable information on places, safety, and even part-time job opportunities abroad.</p>
+        <br>
+        <p>For too long, travel has been a leap of faith. Our platform aims to change that by connecting travelers directly with locals. By curating content and maintaining a strict review process, we ensure that every tip, every recommendation, and every job listing is safe, accurate, and truly useful. Join us and start your next journey with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Photos Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+      <div class="gallery-header">
+        <h2 class="gallery-title">Best Photos from Andhra Pradesh</h2>
+        <p class="gallery-subtitle">Discover breathtaking destinations through the lens of fellow travelers. Each photo tells a story of adventure, culture, and unforgettable experiences.</p>
+      </div>
+
+      <div class="gallery-controls">
+        <button class="filter-btn active" onclick="filterPhotos('all')">All Photos</button>
+        <button class="filter-btn" onclick="filterPhotos('Rajahmundry')">Rajahmundry</button>
+        <button class="filter-btn" onclick="filterPhotos('Kakinada')">Kakinada</button>
+        <button class="filter-btn" onclick="filterPhotos('Bhimavaram')">Bhimavaram</button>
+        <button class="filter-btn" onclick="filterPhotos('Vizag')">Vishakapatnam</button>
+      </div>
+
+      <div class="photos-grid">
+        <div class="photo-card" data-category="Rajahmundry">
+          <img src="https://cdn.britannica.com/02/142602-050-448C18B6/railway-bridge-Godavari-River-India-Andhra-Pradesh-1997.jpg"  class="photo-image">
+          <div class="photo-category">Rajahmundry</div>
+          <div class="photo-rating">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span>4.9</span>
+          </div>
+          <div class="photo-overlay">
+            <div class="photo-location">Rajahmundry,Andhra Pradesh</div>
+            <div class="photo-description">Rajahmundry is a city on the eastern banks of the sacred Godavari River, in the southeast Indian state of Andhra Pradesh. It’s home to the huge, riverside ISKCON Temple complex.</div>
+            <div class="photo-stats">
+              <span class="stat-item">📸 2.1K views</span>
+              <span class="stat-item">❤️ 847 likes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card" data-category="Kakinada">
+          <img src="https://cdn1.tripoto.com/media/filter/tst/img/1/SpotDocument/1480053904_1480053904_4113944989_9897104326_z.jpg.webp"  class="photo-image">
+          <div class="photo-category">Kakinada</div>
+          <div class="photo-rating">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span>4.8</span>
+          </div>
+          <div class="photo-overlay">
+            <div class="photo-location">Kakinada</div>
+            <div class="photo-description">Kakinada is a port city and municipal corporation in the Indian state of Andhra Pradesh. Situated along the Bay of Bengal, it serves as the headquarters of Kakinada district and is a prominent economic and cultural centre in the region</div>
+            <div class="photo-stats">
+              <span class="stat-item">📸 1.8K views</span>
+              <span class="stat-item">❤️ 723 likes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card" data-category="Bhimavaram">
+          <img src="https://d3sftlgbtusmnv.cloudfront.net/blog/wp-content/uploads/2024/09/Cp-6-840x425.jpg"  class="photo-image">
+          <div class="photo-category">Bhimavaram</div>
+          <div class="photo-rating">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span>4.7</span>
+          </div>
+          <div class="photo-overlay">
+            <div class="photo-location">Bhimavaram</div>
+            <div class="photo-description">Bhimavaram is a city and headquarters of West Godavari district in the Indian state of Andhra Pradesh</div>
+            <div class="photo-stats">
+              <span class="stat-item">📸 3.2K views</span>
+              <span class="stat-item">❤️ 1.2K likes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card" data-category="Vizag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Vizag_aerial_view.jpg" class="photo-image">
+          <div class="photo-category">Vishakapatnam</div>
+          <div class="photo-rating">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span>4.9</span>
+          </div>
+          <div class="photo-overlay">
+            <div class="photo-location">Vishakapatnam,Andhra Pradesh</div>
+            <div class="photo-description">Visakhapatnam is a port city and industrial center in the Indian state of Andhra Pradesh, on the Bay of Bengal.</div>
+            <div class="photo-stats">
+              <span class="stat-item">📸 4.1K views</span>
+              <span class="stat-item">❤️ 1.8K likes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card" data-category="nature">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop" alt="Northern Lights" class="photo-image">
+          <div class="photo-category">Nature</div>
+          <div class="photo-rating">
+            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+            <span>4.8</span>
+          </div>
+          <div class="photo-overlay">
+            <div class="photo-location">Iceland</div>
+            <div class="photo-description">Witness the spectacular Aurora Borealis dancing across the Arctic sky in this natural light show.</div>
+            <div class="photo-stats">
+              <span class="stat-item">📸 2.7K views</span>
+              <span class="stat-item">❤️ 956 likes</span>
+            </div>
+          </div>
+        </div><br>
+
+        
+
+      <div class="view-all-container">
+        <a href="#gallery" class="view-all-btn">View All Photos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">What Travelers Are Saying</h2>
+      <div class="testimonial-card">
+        <p>"I Found These places as underrated, culturally rich destination known for its stunning natural beauty, including beaches and lush hills, and its vibrant spiritual sites like ancient temples"</p>
+        <p class="testimonial-author">— Krishna, Traveler</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <p class="copyright">&copy; 2025 TRAVEL BEYOND INDIA. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
